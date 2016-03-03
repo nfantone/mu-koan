@@ -1,0 +1,30 @@
+{
+  "paths": {
+    "src": ["app.js", "app/**/*.js"],
+    "test": ["test/**/*.spec.js"]
+  },
+  "nodemon": {
+    "script": "app.js",
+    "ignore": ["build.json", ".editorconfig", "test/",
+        ".eslintrc", ".gitignore", "gulpfile.js", "README.md", "tmp", "coverage"],
+    "delay": 3000,
+    "verbose": true
+  },
+  "debug": {
+    "debugPort": 5858,
+    "webHost": "localhost",
+    "webPort": 9090
+  },
+  "mocha": {
+    "require": ["should"]
+  },
+  "istanbul": {
+    "enforceThresholds": false,
+    "thresholds": {
+      "global": 80
+    }
+  },
+  "eslint": {
+    "failOnError": true
+  }
+}
