@@ -29,9 +29,10 @@ gulp
 The boilerplate adds support for the following to a barebones Koa app:
 
 - Body parsing ([koa-bodyparser](https://www.npmjs.com/package/koa-bodyparser))
+- Pretty JSON responses ([koa-json](https://www.npmjs.com/package/koa-json))
 - Global error handling ([koa-json-error](https://www.npmjs.com/package/koa-json-error))
 - Cache control ([koa-cache-control](https://www.npmjs.com/package/koa-cache-control))
-- Compression ([koa-cache-control](https://www.npmjs.com/package/koa-cache-control))
+- Compression ([koa-compress](https://www.npmjs.com/package/koa-compress))
 - CORS ([koa-cors](https://www.npmjs.com/package/koa-cors))
 - ETag and conditional `GET` ([koa-etag](https://www.npmjs.com/package/koa-etag))
 - JWT authentication ([koa-jwt](https://www.npmjs.com/package/koa-jwt))
