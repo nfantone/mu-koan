@@ -17,6 +17,7 @@ const path = require('path');
  * `gulp nodemon`
  */
 gulp.task('nodemon', function() {
+  process.env.NODE_ENV = 'development';
   var debug = argv.debug || argv.debugBrk;
   var options = _.defaults(config.nodemon, {
     watch: config.paths.src,
