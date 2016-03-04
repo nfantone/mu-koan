@@ -1,13 +1,7 @@
 'use strict';
 
 /**
- * Koa API that recieves HTTP events via POST triggered
- * from landing pages, extracts critical information from them
- * and stores them.
- *
- * Provides the following endpoints:
- *
- * POST /track/phonecall
+ * Koa v2 API boilerplate to achieve enlightenment.
  */
 const path = require('path');
 require('app-module-path').addPath(path.join(__dirname, 'app'));
