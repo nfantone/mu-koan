@@ -2,7 +2,10 @@
 /**
  * Bootstraps and configures a Koa application to
  * be used as a JSON REST API.
+ *
+ * @module server
  */
+const join = require('path').join;
 const Koa = require('koa');
 const http = require('http');
 const shutdown = require('shutdown');
@@ -19,6 +22,7 @@ const conditional = require('koa-conditional-get');
 const json = require('koa-json');
 const cors = require('koa-cors');
 const jwt = require('koa-jwt');
+const favicon = require('koa-favicon');
 const error = require('koa-json-error');
 const log = require('logger');
 const errorLogger = require('middlewares/error-logger');
@@ -45,6 +49,7 @@ app.use(adapt(conditional()));
 app.use(etag());
 app.use(adapt(cacheControl(config.get('cacheControl'))));
 app.use(adapt(cors()));
+app.use(adapt(favicon(join(__dirname, '..', 'favicon.ico'))));
 app.use(adapt(jwt(config.get('jwt')).unless({
   path: [/^\/status$/]
 })));
