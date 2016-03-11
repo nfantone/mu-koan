@@ -51,7 +51,7 @@ app.use(adapt(cacheControl(config.get('cacheControl'))));
 app.use(adapt(cors()));
 app.use(adapt(favicon(join(__dirname, '..', 'favicon.ico'))));
 app.use(adapt(jwt(config.get('jwt')).unless({
-  path: [/^\/status$/]
+  path: [/\/status$/]
 })));
 app.use(adapt(json()));
 
