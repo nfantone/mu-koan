@@ -105,7 +105,6 @@ gulp.task('test', function() {
         .pipe($.mocha(config.mocha))
         // Creating the reports after tests ran
         .pipe($.istanbul.writeReports())
-        // Enforce a coverage of at least 80%
         .pipe($.if(config.istanbul.enforceThresholds,
           $.istanbul.enforceThresholds(config.istanbul)))
         .pipe($.exit());
