@@ -2,6 +2,8 @@
 /**
  * Small module that instantiates and configures
  * a logger to be used throughout the application.
+ *
+ * @module  logger
  */
 const winston = require('winston');
 const config = require('config');
