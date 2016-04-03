@@ -25,7 +25,6 @@ const jwt = require('koa-jwt');
 const favicon = require('koa-favicon');
 const error = require('koa-json-error');
 const log = require('logger');
-const errorLogger = require('middlewares/error-logger');
 const config = require('config');
 
 log.info('Starting and configuring Koa server');
@@ -35,7 +34,9 @@ let app = new Koa();
 
 // Setup global error handler and logger
 app.use(adapt(error(config.get('error'))));
-app.use(errorLogger({ logger: log }));
+app.on('error', (error) => {
+  log.error('Unexpected exception ', error);
+});
 
 // Configure and setup middlewares
 app.use(bodyParser());
