@@ -22,7 +22,7 @@
     "scaffolding"
   ],
   "dependencies": {
-    "app-module-path": "^1.0.5",
+    "app-module-path": "^1.0.6",
     "glob": "^7.0.3",
     "http-shutdown": "^1.0.3",
     "koa": "^2.0.0-alpha.3",
@@ -41,14 +41,14 @@
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^1.0.2",
     "koa-router": "^7.0.1",
-    "lodash": "^4.6.1",
+    "lodash": "^4.7.0",
     "moment": "^2.12.0",
     "nconf": "^0.8.4",
     "winston": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^2.3.0",
-    "eslint-config-semistandard": "^5.0.1",
+    "eslint": "^2.6.0",
+    "eslint-config-semistandard": "^6.0.1",
     "eslint-config-standard": "^5.1.0",
     "eslint-plugin-promise": "^1.1.0",
     "eslint-plugin-standard": "^1.3.2",
@@ -66,7 +66,7 @@
     "minimist": "^1.2.0",
     "pre-commit": "^1.1.2",
     "run-sequence": "^1.1.5",
-    "should": "^8.2.2",
+    "should": "^8.3.0",
     "supertest": "^1.2.0"
   },
   "pre-commit": [
