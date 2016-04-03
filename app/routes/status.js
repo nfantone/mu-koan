@@ -1,12 +1,12 @@
 'use strict';
 /**
  * Implementation of API /status endpoint.
- * @author nfantone
+ * @module status
  */
-
 const path = require('path');
 const pck = require(path.join(__dirname, '..', '..', 'package.json'));
 const moment = require('moment');
+const config = require('config');
 
 /**
  * Set up /status endpoint.
@@ -25,9 +25,13 @@ module.exports = function(router) {
       success: true,
       name: pck.name,
       version: pck.version,
+      env: config.get('env'),
       timestamp: moment().format('lll'),
-      platform: process.platform,
-      env: process.env.NODE_ENV
+      process: {
+        pid: process.pid,
+        platform: process.platform,
+        mem: process.memoryUsage()
+      }
     };
   });
 };
