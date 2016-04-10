@@ -33,7 +33,7 @@ log.info('Starting and configuring Koa server');
 let app = new Koa();
 
 // Setup global error handler and logger
-app.use(adapt(error(config.get('error'))));
+app.use(error(config.get('error')));
 app.on('error', (error) => {
   log.error('Unexpected exception ', error);
 });
@@ -41,20 +41,20 @@ app.on('error', (error) => {
 // Configure and setup middlewares
 app.use(bodyParser());
 app.use(morgan(config.get('morgan:format'), config.get('morgan:options')));
-app.use(adapt(responseTime()));
+app.use(responseTime());
 app.use(adapt(helmet()));
 app.use(compress({
   flush: zlib.Z_SYNC_FLUSH
 }));
-app.use(adapt(conditional()));
+app.use(conditional());
 app.use(etag());
 app.use(adapt(cacheControl(config.get('cacheControl'))));
 app.use(adapt(cors()));
-app.use(adapt(favicon(join(__dirname, '..', 'favicon.ico'))));
+app.use(favicon(join(__dirname, '..', 'favicon.ico')));
 app.use(adapt(jwt(config.get('jwt')).unless({
   path: [/\/status$/]
 })));
-app.use(adapt(json()));
+app.use(json());
 
 // Setup routes
 let router = require('router')({ prefix: config.get('koa:namespace') });

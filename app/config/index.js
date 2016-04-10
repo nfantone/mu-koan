@@ -6,6 +6,7 @@
  *
  * @module config
  */
+const _ = require('lodash');
 const path = require('path');
 const pck = require(path.join('..', '..', 'package'));
 const nconf = require('nconf');
@@ -21,6 +22,10 @@ nconf
   .defaults({
     logger: {
       label: pck.name
+    },
+    error: {
+      postFormat: (e, obj) =>
+        process.env.NODE_ENV === 'production' ? _.omit(obj, 'stack') : obj
     }
   })
   .overrides({
