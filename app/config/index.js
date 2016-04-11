@@ -15,7 +15,7 @@ const DEFAULT_ENVIRONMENT = 'development';
 
 nconf
   .argv()
-  .env()
+  .env('_')
   .file({
     file: path.join(__dirname, 'properties.json')
   })
@@ -29,7 +29,7 @@ nconf
     }
   })
   .overrides({
-    env: process.env.NODE_ENV || DEFAULT_ENVIRONMENT,
+    environment: process.env.NODE_ENV || DEFAULT_ENVIRONMENT,
     morgan: {
       options: {
         skip: () => process.env.NODE_ENV === 'test'
