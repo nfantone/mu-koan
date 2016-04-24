@@ -15,7 +15,7 @@ const path = require('path');
 const ROUTES_PATH = path.join(__dirname, 'routes');
 
 module.exports = function(options) {
-  options = options || {};
+  options = _.merge({}, options);
   var router = new Router(options);
   _.each(glob.sync(path.join(ROUTES_PATH, '**/*.js')), (file) => {
     var route = path.parse(file);

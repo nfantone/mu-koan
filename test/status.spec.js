@@ -24,10 +24,10 @@ describe('/status', function() {
           success: true,
           name: pck.name,
           version: pck.version,
-          platform: process.platform,
           env: process.env.NODE_ENV
         });
         body.should.have.property('timestamp').and.be.type('string');
+        body.should.have.property('process').and.be.type('object');
       }).end(done);
   });
 });

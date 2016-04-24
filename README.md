@@ -1,4 +1,5 @@
 # mu-kōän 公案
+[![Build Status](https://travis-ci.org/nfantone/mu-koan.svg?branch=develop)](https://travis-ci.org/nfantone/mu-koan) [![codecov.io](https://codecov.io/github/nfantone/mu-koan/coverage.svg?branch=develop)](https://codecov.io/github/nfantone/mu-koan?branch=develop) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/nfantone/mu-koan/blob/master/LICENSE)
 
 > An opinionated Koa v2 JSON API boilerplate to achieve enlightenment.
 
@@ -29,9 +30,10 @@ gulp
 The boilerplate adds support for the following to a barebones Koa app:
 
 - Body parsing ([koa-bodyparser](https://www.npmjs.com/package/koa-bodyparser))
+- Pretty JSON responses ([koa-json](https://www.npmjs.com/package/koa-json))
 - Global error handling ([koa-json-error](https://www.npmjs.com/package/koa-json-error))
 - Cache control ([koa-cache-control](https://www.npmjs.com/package/koa-cache-control))
-- Compression ([koa-cache-control](https://www.npmjs.com/package/koa-cache-control))
+- Compression ([koa-compress](https://www.npmjs.com/package/koa-compress))
 - CORS ([koa-cors](https://www.npmjs.com/package/koa-cors))
 - ETag and conditional `GET` ([koa-etag](https://www.npmjs.com/package/koa-etag))
 - JWT authentication ([koa-jwt](https://www.npmjs.com/package/koa-jwt))

@@ -2,7 +2,10 @@
 /**
  * Bootstraps and configures a Koa application to
  * be used as a JSON REST API.
+ *
+ * @module server
  */
+const join = require('path').join;
 const Koa = require('koa');
 const http = require('http');
 const shutdown = require('shutdown');
@@ -19,6 +22,7 @@ const conditional = require('koa-conditional-get');
 const json = require('koa-json');
 const cors = require('koa-cors');
 const jwt = require('koa-jwt');
+const favicon = require('koa-favicon');
 const error = require('koa-json-error');
 const log = require('logger');
 const config = require('config');
@@ -28,25 +32,29 @@ log.info('Starting and configuring Koa server');
 // Create Koa app
 let app = new Koa();
 
-// Setup global error handler
-app.use(adapt(error(config.get('error'))));
+// Setup global error handler and logger
+app.use(error(config.get('error')));
+app.on('error', (error) => {
+  log.error('Unexpected exception ', error);
+});
 
 // Configure and setup middlewares
 app.use(bodyParser());
 app.use(morgan(config.get('morgan:format'), config.get('morgan:options')));
-app.use(adapt(responseTime()));
+app.use(responseTime());
 app.use(adapt(helmet()));
 app.use(compress({
   flush: zlib.Z_SYNC_FLUSH
 }));
-app.use(adapt(conditional()));
+app.use(conditional());
 app.use(etag());
 app.use(adapt(cacheControl(config.get('cacheControl'))));
 app.use(adapt(cors()));
+app.use(favicon(join(__dirname, '..', 'favicon.ico')));
 app.use(adapt(jwt(config.get('jwt')).unless({
-  path: [/^\/status$/]
+  path: [/\/status$/]
 })));
-app.use(adapt(json()));
+app.use(json());
 
 // Setup routes
 let router = require('router')({ prefix: config.get('koa:namespace') });

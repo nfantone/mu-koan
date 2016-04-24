@@ -10,6 +10,9 @@ const config = require('./build.json');
 const gulp = require('gulp');
 const path = require('path');
 
+// Declare release task
+$.release.register(gulp);
+
 /**
  * Starts a nodemon server, watches
  * sources and restarts on changes.
@@ -17,6 +20,7 @@ const path = require('path');
  * `gulp nodemon`
  */
 gulp.task('nodemon', function() {
+  process.env.NODE_ENV = 'development';
   var debug = argv.debug || argv.debugBrk;
   var options = _.defaults(config.nodemon, {
     watch: config.paths.src,
@@ -104,7 +108,6 @@ gulp.task('test', function() {
         .pipe($.mocha(config.mocha))
         // Creating the reports after tests ran
         .pipe($.istanbul.writeReports())
-        // Enforce a coverage of at least 80%
         .pipe($.if(config.istanbul.enforceThresholds,
           $.istanbul.enforceThresholds(config.istanbul)))
         .pipe($.exit());

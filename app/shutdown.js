@@ -3,7 +3,7 @@
  * Simple module that allows closing or
  * freeing resources before server shutdown.
  *
- * @author nfantone
+ * @module shutdown
  */
 const _ = require('lodash');
 const log = require('logger');
