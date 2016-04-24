@@ -1,9 +1,9 @@
 {
   "name": "mu-koan",
   "version": "1.0.0",
+  "codename": "Germinal gassho",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
-  "private": true,
   "main": "app.js",
   "files": [
     "app.js",
@@ -81,6 +81,5 @@
   },
   "pre-commit": [
     "validate"
-  ],
-  "codename": "Germinal gassho"
+  ]
 }
