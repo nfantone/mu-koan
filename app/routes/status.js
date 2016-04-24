@@ -25,7 +25,7 @@ module.exports = function(router) {
       success: true,
       name: pck.name,
       version: pck.version,
-      env: config.get('env'),
+      env: config.get('environment'),
       timestamp: moment().format('lll'),
       process: {
         pid: process.pid,
