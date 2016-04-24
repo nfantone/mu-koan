@@ -5,6 +5,12 @@
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
   "private": true,
   "main": "app.js",
+  "files": [
+    "app.js",
+    "app/",
+    "test/",
+    "favicon.ico"
+  ],
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
@@ -16,11 +22,13 @@
   },
   "keywords": [
     "koa",
+    "koa2",
     "api",
     "json",
     "boilerplate",
     "starter",
-    "scaffolding"
+    "scaffolding",
+    "enlightenment"
   ],
   "dependencies": {
     "app-module-path": "^1.0.6",
