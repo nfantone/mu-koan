@@ -10,6 +10,9 @@ const config = require('./build.json');
 const gulp = require('gulp');
 const path = require('path');
 
+// Declare release task
+$.release.register(gulp);
+
 /**
  * Starts a nodemon server, watches
  * sources and restarts on changes.

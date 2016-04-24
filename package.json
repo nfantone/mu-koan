@@ -1,6 +1,6 @@
 {
   "name": "mu-koan",
-  "version": "1.0.0",
+  "version": "1.0.0-dev",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
   "private": true,
@@ -63,6 +63,7 @@
     "gulp-node-inspector": "0.1.0",
     "gulp-nodemon": "^2.0.6",
     "gulp-plumber": "^1.1.0",
+    "gulp-release": "^1.0.5",
     "gulp-util": "^3.0.7",
     "minimist": "^1.2.0",
     "pre-commit": "^1.1.2",
