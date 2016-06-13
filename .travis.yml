@@ -2,16 +2,16 @@ language: node_js
 node_js:
 - '4'
 - '5'
-branches: 
+- '6'
+branches:
 only:
 - master
 - develop
 notifications:
   email:
   - nfantone@gmail.com
-script: gulp test && ./node_modules/.bin/codecov
+script: npm run validate && ./node_modules/.bin/codecov
 before_script:
-- npm install -g gulp
 - npm install codecov
 deploy:
   provider: npm
