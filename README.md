@@ -10,8 +10,8 @@ mu-kōän serves as an initial scaffolding for Koa 2.0.0+ applications aimed at 
 ```sh
 git clone https://github.com/nfantone/mu-koan.git
 cd mu-koan
-npm i && sudo npm i -g gulp
-gulp
+npm i
+npm start
 
 [14:25:35] Using gulpfile ~/dev/js/mu-koan/gulpfile.js
 [14:25:35] Starting 'default'...
@@ -49,6 +49,7 @@ Apart from Koa's middleware suite, mu-kōän contains:
 - A pre-configured [Gulp](http://gulpjs.com/) build.
   - `gulp [--debug]` to start the server
   - `gulp test` to run unit tests
+  - `gulp eslint` to lint the project
 - Linting based on [semistandard](https://www.npmjs.com/package/semistandard) eslint.
 - [Mocha](https://mochajs.org/) as a test runner; [should](http://unitjs.com/guide/should-js.html) as the assertion library.
 - [Istanbul](https://github.com/gotwarlost/istanbul) coverage reports.
