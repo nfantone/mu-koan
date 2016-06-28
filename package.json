@@ -1,14 +1,14 @@
 {
   "name": "mu-koan",
-  "version": "1.0.1-dev",
+  "version": "2.0.0-dev",
   "codename": "Germinal gassho",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
-  "main": "app.js",
+  "main": "index.js",
+  "license": "MIT",
   "files": [
-    "app.js",
-    "app/",
-    "test/",
+    "index.js",
+    "lib/",
     "favicon.ico"
   ],
   "scripts": {
@@ -31,10 +31,8 @@
     "enlightenment"
   ],
   "dependencies": {
-    "app-module-path": "^1.1.0",
-    "glob": "^7.0.3",
+    "glob": "^7.0.5",
     "http-shutdown": "^1.0.3",
-    "koa": "^2.0.0",
     "koa-adapter-bluebird": "0.0.1",
     "koa-bodyparser": "^3.0.0",
     "koa-cache-control": "^1.0.0",
@@ -46,17 +44,19 @@
     "koa-helmet": "^1.0.0",
     "koa-json": "^2.0.0",
     "koa-json-error": "^3.0.0",
-    "koa-jwt": "^1.2.0",
+    "koa-jwt": "^2.0.0",
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
     "koa-router": "^7.0.1",
-    "lodash": "^4.13.1",
-    "moment": "^2.13.0",
+    "lodash": "^4.13.1"
+  },
+  "peerDependencies": {
+    "koa": "^2.0.0",
     "nconf": "^0.8.4",
     "winston": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^2.12.0",
+    "eslint": "^2.13.1",
     "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.3.1",
     "eslint-plugin-promise": "^1.3.2",
@@ -71,7 +71,7 @@
     "gulp-node-inspector": "0.1.0",
     "gulp-nodemon": "^2.1.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-release": "^1.0.5",
+    "gulp-release": "^1.0.6",
     "gulp-util": "^3.0.7",
     "minimist": "^1.2.0",
     "pre-commit": "^1.1.3",
