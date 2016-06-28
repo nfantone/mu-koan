@@ -55,24 +55,42 @@ The following properties are used to configure the different middlewares packed 
 ```javascript
 {
   "koa": {
-    "hostname": "localhost",
-    "port": 3000,
     // All paths and routes will be under this namespace
     "namespace": "/api",
     // Root of all your **/*.js controllers
-    "routes": "./routes"
+    "routes": "../routes"
   },
   "jwt": {
-    // See https://www.npmjs.com/koa-jwt for more
-    "passthrough": true,
-    "secret": "(w_E8Qd--@cBvgr8"
+    // Note that actual koa-jwt options are nested within "options"
+    "options": {
+      // See https://www.npmjs.com/koa-jwt for more
+      "passthrough": true,
+      "secret": "(w_E8Qd--@cBvgr8"
+    },
+    // Exclude JWT verification from certain paths
+    "unless": {
+      // See https://github.com/Foxandxss/koa-unless#current-options for more
+      "path": ["/status"]
+    }
   },
+  "cors": {
+    // See https://www.npmjs.com/kcors for more
+    "allowedMethods": "GET"
+  },
+  "helmet": {
+    // See https://github.com/helmetjs/helmet#top-level-helmet for more
+    "frameguard": false
+  }
   "morgan": {
+    "options": {
+      // See https://github.com/expressjs/morgan#options for more
+      "immediate": true
+    },
     // See https://www.npmjs.com/koa-morgan for more
     "format": "combined"
   },
   "cacheControl": {
-    // See https://www.npmjs.com/koa-cache-control for more
+    // See https://github.com/DaMouse404/koa-cache-control#options for more
     "public": true,
     "maxAge": 3600
   },
@@ -155,7 +173,7 @@ The boilerplate adds support for the following to a barebones Koa app:
 - Global error handling ([koa-json-error](https://www.npmjs.com/package/koa-json-error))
 - Cache control ([koa-cache-control](https://www.npmjs.com/package/koa-cache-control))
 - Compression ([koa-compress](https://www.npmjs.com/package/koa-compress))
-- CORS ([koa-cors](https://www.npmjs.com/package/koa-cors))
+- CORS ([kcors](https://www.npmjs.com/package/kcors))
 - ETag and conditional `GET` ([koa-etag](https://www.npmjs.com/package/koa-etag))
 - JWT authentication ([koa-jwt](https://www.npmjs.com/package/koa-jwt))
 - Security headers ([koa-helmet](https://www.npmjs.com/package/koa-helmet))
