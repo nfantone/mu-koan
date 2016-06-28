@@ -10,7 +10,7 @@ Relies on [winston](https://www.npmjs.com/winston) for logging and [nconf](https
 [![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)
 
 ```sh
-npm i --save mu-koan 
+npm i --save mu-koan
 ```
 
 > mu-kōän requires [node](https://nodejs.org) 4.3.1+
@@ -25,11 +25,14 @@ const config = require('nconf');
 const Koa = require('koa');
 
 let app = new Koa();
-// Configure middlewares on `app`
 // ...
+// Configure other middlewares on `app`.
+// For a list of already included middlewares
+// by mu-kōän checkout package.json or the section below:
+// https://github.com/nfantone/mu-koan/tree/feature/module#features
 
 // Returns an instance of node's `http` server
-// (https://nodejs.org/api/http.html#http_http) 
+// (https://nodejs.org/api/http.html#http_http)
 const server = require('mu-koan')(app);
 
 // Start Koa server
@@ -115,7 +118,7 @@ module.exports = function(router) {
 ```
 
 ## Logging
-mu-kōän prints out log messages using a named `winston` logger. The actual name can be provided as a second optional `options` argument to the main exported function.
+mu-kōän prints out log messages using a `winston` logger. It can be provided as a second optional `options` argument to the main exported function.
 
 ```javascript
 'use strict'
@@ -133,10 +136,14 @@ winston.loggers.add('some-logger', {
 const Koa = require('koa');
 
 let app = new Koa();
+
+// `logger` option below can also be a `winston.Logger` instance
 const server = require('mu-koan')(app, { logger: 'some-logger' });
 ```
 
-Actual logger configuration is not handled by mu-kōän. If no logger name is provided, the _default_ `winston` logger will be used.
+Actual logger configuration is not handled by mu-kōän. The option can be either a `String` or a `winston.Logger` instance. In the former case, the value will be used to fetch a logger by means of `winston.loggers.get(options.logger)`.
+
+If none is provided, the _default_ `winston` logger will be used.
 
 > Learn more about handling multiple loggers at [the official Winston docs](https://www.npmjs.com/package/winston#working-with-multiple-loggers-in-winston)
 
