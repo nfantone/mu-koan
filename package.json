@@ -62,7 +62,7 @@
     "eslint-plugin-promise": "^1.3.2",
     "eslint-plugin-standard": "^1.3.2",
     "gulp": "^3.9.1",
-    "gulp-eslint": "^2.0.0",
+    "gulp-eslint": "^3.0.0",
     "gulp-exit": "0.0.2",
     "gulp-if": "^2.0.1",
     "gulp-istanbul": "^1.0.0",
