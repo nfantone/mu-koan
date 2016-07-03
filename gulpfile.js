@@ -19,7 +19,7 @@ $.release.register(gulp);
  *
  * `gulp nodemon`
  */
-gulp.task('nodemon', function() {
+gulp.task('nodemon', () => {
   process.env.NODE_ENV = 'development';
   var debug = argv.debug || argv.debugBrk;
   var options = _.defaults(config.nodemon, {
@@ -56,7 +56,7 @@ gulp.task('nodemon', function() {
  *
  * `gulp eslint`
  */
-gulp.task('eslint', function() {
+gulp.task('eslint', () => {
   return gulp.src(config.paths.src)
     .pipe($.eslint())
     .pipe($.eslint.format())
@@ -70,7 +70,7 @@ gulp.task('eslint', function() {
  *
  * `gulp debug`
  */
-gulp.task('debug', function(cb) {
+gulp.task('debug', (cb) => {
   var options = _.defaults(config.debug, {
     debugPort: 5858
   });
@@ -85,7 +85,7 @@ gulp.task('debug', function(cb) {
  *
  * `gulp watch`
  */
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   gulp.watch(config.paths.src, ['validate']);
 });
 
@@ -95,7 +95,7 @@ gulp.task('watch', function() {
  *
  * `gulp test`
  */
-gulp.task('test', function() {
+gulp.task('test', () => {
   process.env.NODE_ENV = 'test';
   process.env['logger:level'] = 'error';
   return gulp.src(config.paths.src)
@@ -129,7 +129,7 @@ gulp.task('validate', ['eslint', 'test']);
  *
  * `gulp [--debug|--debug-brk]`
  */
-gulp.task('default', function(cb) {
+gulp.task('default', (cb) => {
   var debug = argv.debug || argv.debugBrk;
   sequence(_.compact([
     'eslint',

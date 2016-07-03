@@ -1,23 +1,28 @@
 language: node_js
 node_js:
-- '4'
 - '5'
+- '6'
 branches:
-only:
-- master
-- develop
+  only:
+  - master
+  - develop
+  - /^v?(\d\.){2}\d$/
 notifications:
   email:
   - nfantone@gmail.com
-script: gulp test && ./node_modules/.bin/codecov
+cache:
+  bundler: true
+  directories:
+  - node_modules
+script: npm run validate && ./node_modules/.bin/codecov
 before_script:
-- npm install -g gulp
 - npm install codecov
 deploy:
   provider: npm
   email: nfantone@gmail.com
   api_key:
-    secure: kAX/pxm24RB/pyisFCgYGaEc0vfa6HPFqu1qjxhzjBI8+I3IvKmWuyderC5EuxccZu+glCNnuxWoHXGkDf0xKHTuPk3PCs5rEQ2Cfoqyd/ZBxjkJXVWimwMJyoOsDeEw1LdOfWRRJCd98kbXa5z9m8xOaa/2doMSwj3NIVHiICRx+Y7bP5VCE8PDRpViO84R9GH1HBHQr3PjaxnPVMcQxq/c7oO9/FpEVabqSW4dQx58qhLVkPTzQ0/E58nxzcijGwg15S8DhnKOGo61zuUn/DULEj/5rjSLlwmMxbj1yqOz9Pb/EO1dbkYDkonAFO52tgvWiKnPvJJTqMVgb/Qdl571LOWWugF5SBwnkXSFgDKe5TF1Z5MWzQBkiBRm7yBjPeQN1uJXPV+F5jTjprFaR4FzDBYRXys7NwtFtpmE1pnjZ8hqX+l94Qo1Jiwr9/2XC7k1FM5RUTuY24eJogKizdUbO1cufTnWWK6LlhOFBoHZiWaaZVdRTAPpD4IiYaXE5KOrv4jqRpDNObLiCFSFV5VNDqwIv50TPLcygWmwaaT69VHAN3ilG3IvJiV+k5PBwlrYmcx3OoYL+4NutzpaWBnLXTmkdQYF0UzJUxN0CklgtJwrIn6mT5dj1KUFBIhvsbRsFxrPTu/CfCNI7o7aSzGgv5Per/dZVTdsTkdxyEU=
+    secure: XpyWFiL/HBU/Kgce5x6pl8RqtoBNHG7h7sANk4LhhsaLJd8P4+rSP3Fdr1S/tY4uIPVVuO2/1UiQsSdmjYdR04tk4BPXaLH2ZknREF3V7k30ESS52IUKxEsHEVR37SE2NiOqutYDvI4dsO8ANOh/b+5CaZPEvchZRWvaydlFUsYsQwZICV7tKIEwU0E+pLboG0Y08UGaqG1j5KH6pp+5BL4G3rv04f0IcA2GtdjSDKcVjZE1U/MvQCAFOraXDJQq906n83LRM9Tf9Yr7oZlR9ivNzP1Sp8kOJh/L4IC/jkczfwGgA6NnXyt0nfDxVaKyevyl4A/ttYFbuLJ5p2qSxyd3KAfvWxgMzypFV5EaWvObjWcZbaCoR/GNz8J4ATgQ9LfMD/dgtHrpE8WCCb2XkCXU2rkmaIxPUyAHPVL3q20GXi/K2yl725vPwJLr37vHYfbS/7tkqNZdc7DIPCtMLHyZiMrTlH4HIvPYcFpFagKaLmVKrB49qO/w/nk0sdh2p3dLCUxd5PffMX9wygTN9YbMHYMDem3QaG/dF1WjgtSEq+EdC1c7mwGorDc+3SL9kthnlwyu/9rHsdz3pxc3tqmwZOK7/A/GQMRUxv3vSNln7saRV3Z/wcdWHVU/3gcJkA03lhEP3hXeEiRMLAQSs7XiFk7IgqYQkKkpao9a/yw=
   on:
     tags: true
     repo: nfantone/mu-koan
+    node: '5'
