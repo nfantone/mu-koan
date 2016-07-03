@@ -1,19 +1,21 @@
 'use strict';
-
 /**
- * Koa v2 API boilerplate to achieve enlightenment.
- * @module mu-koan
+ * An example mu-koan app with minimal setup.
+ *
+ * Run it with `node app.js`
  */
-const path = require('path');
-require('app-module-path').addPath(path.join(__dirname, 'app'));
-const log = require('logger');
-const server = require('server');
-const config = require('config');
+const Koa = require('koa');
+const middlewares = require('.');
+
+const HOSTNAME = 'localhost';
+const PORT = 3000;
+
+// Require mu-koan and pass in the Koa instance
+let app = middlewares.bootstrap(new Koa());
 
 // Starts Koa server
-server.listen(config.get('koa:port'), config.get('koa:hostname'), () => {
-  log.info('✔ Koa server listening on %s:%s [%s]', config.get('koa:hostname'),
-    config.get('koa:port'), config.get('environment'));
-});
+app.listen(HOSTNAME, PORT, () =>
+  console.log(`✔ Koa server listening on ${HOSTNAME}:${PORT} [${app.env}]`)
+);
 
-module.exports = server;
+module.exports = app;
