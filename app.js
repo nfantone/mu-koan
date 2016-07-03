@@ -2,22 +2,20 @@
 /**
  * An example mu-koan app with minimal setup.
  *
- * Run it with `node app.js [--koa.port=3000 --koa.hostname=localhost]`
+ * Run it with `node app.js`
  */
-const log = require('winston');
-const nconf = require('nconf');
 const Koa = require('koa');
+const middlewares = require('.');
+
+const HOSTNAME = 'localhost';
+const PORT = 3000;
 
 // Require mu-koan and pass in the Koa instance
-const server = require('.')(new Koa());
-
-let config = nconf.argv();
+let app = middlewares.bootstrap(new Koa());
 
 // Starts Koa server
-server.listen(config.get('koa:port'), config.get('koa:hostname'), () => {
-  var addr = server.address();
-  log.info('✔ Koa server listening on %s:%s [%s]', addr.address,
-    addr.port, config.get('environment'));
-});
+app.listen(HOSTNAME, PORT, () =>
+  console.log(`✔ Koa server listening on ${HOSTNAME}:${PORT} [${app.env}]`)
+);
 
-module.exports = server;
+module.exports = app;

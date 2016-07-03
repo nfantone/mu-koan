@@ -3,9 +3,7 @@
 
 > An opinionated Koa v2 JSON API boilerplate to achieve enlightenment.
 
-mu-kōän serves as kickstarter set for Koa 2.0.0+ applications aimed at creating _stateless_ REST JSON APIs. It includes a set of predefined Koa modules allowing for quicker bootstrapping with sensible defaults.
-
-Relies on [winston](https://www.npmjs.com/winston) for logging and [nconf](https://www.npmjs.com/nconf) for its configuration. Both are declared as `"peerDependencies"`, together with `koa` itself.
+mu-kōän serves as kickstarter set for Koa 2.0.0+ applications aimed at creating _stateless_ REST JSON APIs. It includes a set of predefined Koa middlewares allowing for quicker bootstrapping with sensible defaults.
 
 [![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)
 
@@ -16,12 +14,15 @@ npm i --save mu-koan
 > mu-kōän requires [node](https://nodejs.org) 4.3.1+
 
 ## Usage
-Create a new Koa app, configure it the way you want and pass it as an argument to the `mu-koan` exported function, wich will add its own middlewares and initialize routes.
+Create a new Koa app, configure it the way you want and pass it as an argument to the `bootstrap` exported function, wich will add its own middlewares and initialize routes.
 
 ```javascript
 'use strict'
-const log = require('winston');
-const config = require('nconf');
+// Import some configuration
+// For a detail of available options, see
+// section below.
+const CONFIG = require('./config.json')
+const middlewares = require('mu-koan');
 const Koa = require('koa');
 
 let app = new Koa();
@@ -31,35 +32,19 @@ let app = new Koa();
 // by mu-kōän checkout package.json or the section below:
 // https://github.com/nfantone/mu-koan/tree/feature/module#features
 
-// Returns an instance of node's `http` server
-// (https://nodejs.org/api/http.html#http_http)
-const server = require('mu-koan')(app);
+middlewares.bootstrap(app, CONFIG);
 
 // Start Koa server
-server.listen(config.get('koa:port'), config.get('koa:hostname'), () => {
-  var addr = server.address();
-  log.info('✔ Koa server listening on %s:%s [%s]', addr.address,
-    addr.port, config.get('environment'));
-});
+app.listen();
 ```
 
 > You can take a look at a minimal running `mu-koan` sample app at [app.js](./app.js)
 
 ## Configuration
-By design, mu-kōän requires `nconf` to be used by the host Koa application. It'll pick up the global `nconf` instance, fill in default or missing properties and read values from there.
-
-> Make sure to setup `nconf` with your custom values **before** using `mu-koan`.
-
 The following properties are used to configure the different middlewares packed by `mu-koan`:
 
 ```javascript
 {
-  "koa": {
-    // All paths and routes will be under this namespace
-    "namespace": "/api",
-    // Root of all your **/*.js controllers
-    "routes": "../routes"
-  },
   "jwt": {
     // Note that actual koa-jwt options are nested within "options"
     "options": {
@@ -99,48 +84,14 @@ The following properties are used to configure the different middlewares packed 
 }
 ```
 
-## Controllers
-A _controller_ is node module that exports a `function` that receives a `koa-router` instance and declares something on it. All controllers must be defined under a single root directory (but can be nested as needed).
-
-For example,
-
-```javascript
-'use strict';
-/**
- * Implementation of API /hello endpoint.
- * @module routes/hello
- */
-const moment = require('moment');
-
-/**
- * Set up /hello endpoint.
- * @param  {Object} router A Koa router
- */
-module.exports = function(router) {
-  /**
-   * GET /hello
-   *
-   * Returns a simple hello world
-   * text and a timestamp.
-   */
-  router.get('/hello', (ctx) => {
-    ctx.status = 200;
-    ctx.body = {
-      success: true,
-      message: 'Hello from mu-koan!',
-      timestamp: moment().format('l')
-    };
-  });
-};
-
-```
-
 ## Logging
 mu-kōän prints out log messages using a `winston` logger. It can be provided as a second optional `options` argument to the main exported function.
 
 ```javascript
 'use strict'
+const middlewares = require('mu-koan');
 const winston = require('winston');
+const Koa = require('koa');
 
 // Configure a winston logger
 winston.loggers.add('some-logger', {
@@ -151,12 +102,10 @@ winston.loggers.add('some-logger', {
   }
 });
 
-const Koa = require('koa');
-
 let app = new Koa();
 
 // `logger` option below can also be a `winston.Logger` instance
-const server = require('mu-koan')(app, { logger: 'some-logger' });
+const server = middlewares.bootstrap(app, { logger: 'some-logger' });
 ```
 
 Actual logger configuration is not handled by mu-kōän. The option can be either a `String` or a `winston.Logger` instance. In the former case, the value will be used to fetch a logger by means of `winston.loggers.get(options.logger)`.
@@ -175,9 +124,11 @@ The boilerplate adds support for the following to a barebones Koa app:
 - Compression ([koa-compress](https://www.npmjs.com/package/koa-compress))
 - CORS ([kcors](https://www.npmjs.com/package/kcors))
 - ETag and conditional `GET` ([koa-etag](https://www.npmjs.com/package/koa-etag))
+- RTT headers ([koa-response-time](https://www.npmjs.com/package/koa-response-time))
+- Access logging ([koa-morgan](https://www.npmjs.com/package/koa-morgan)))
 - JWT authentication ([koa-jwt](https://www.npmjs.com/package/koa-jwt))
+- Favicon ([koa-favicon](https://www.npmjs.com/package/koa-favicon))
 - Security headers ([koa-helmet](https://www.npmjs.com/package/koa-helmet))
-- Graceful shutdown ([http-shutdown](https://www.npmjs.com/package/http-shutdown))
 
 
 ---
