@@ -1,15 +1,19 @@
 language: node_js
 node_js:
-- '4'
 - '5'
 - '6'
 branches:
-only:
-- master
-- develop
+  only:
+  - master
+  - develop
+  - /^v?(\d\.){2}\d$/
 notifications:
   email:
   - nfantone@gmail.com
+cache:
+  bundler: true
+  directories:
+  - node_modules
 script: npm run validate && ./node_modules/.bin/codecov
 before_script:
 - npm install codecov
@@ -21,3 +25,4 @@ deploy:
   on:
     tags: true
     repo: nfantone/mu-koan
+    node: '5'
