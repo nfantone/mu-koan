@@ -1,6 +1,6 @@
 {
   "name": "mu-koan",
-  "version": "2.0.0",
+  "version": "2.0.1-dev",
   "codename": "Zodiacal zafu",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
