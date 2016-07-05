@@ -45,6 +45,10 @@ The following properties are used to configure the different middlewares packed 
 
 ```javascript
 {
+  "bodyParser": {
+    // See https://www.npmjs.com/koa-bodyparser for more
+    "jsonLimit": "2mb"
+  },
   "jwt": {
     // Note that actual koa-jwt options are nested within "options"
     "options": {
@@ -85,7 +89,7 @@ The following properties are used to configure the different middlewares packed 
 ```
 
 ## Logging
-mu-kōän prints out log messages using a `winston` logger. It can be provided as a second optional `options` argument to the main exported function.
+mu-kōän prints out log messages using a `winston` logger. It can be provided as a second optional `options` argument to the`bootstrap` function.
 
 ```javascript
 'use strict'
@@ -104,7 +108,7 @@ winston.loggers.add('some-logger', {
 
 let app = new Koa();
 
-// `logger` option below can also be a `winston.Logger` instance
+// `logger` option below can also be a `winston.Logger` instance or `undefined`/`null`
 const server = middlewares.bootstrap(app, { logger: 'some-logger' });
 ```
 
