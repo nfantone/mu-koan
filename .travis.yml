@@ -25,4 +25,4 @@ deploy:
   on:
     tags: true
     repo: nfantone/mu-koan
-    node: '5'
+    node_js: '5'
