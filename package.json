@@ -47,7 +47,7 @@
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
     "lodash.defaultsdeep": "^4.4.0",
-    "mu-koan-logger": "^1.0.1"
+    "mu-koan-logger": "^1.0.2"
   },
   "peerDependencies": {
     "koa": "^2.0.0"

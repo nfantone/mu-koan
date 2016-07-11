@@ -16,6 +16,7 @@ cache:
   - node_modules
 script: npm run validate && ./node_modules/.bin/codecov
 before_script:
+- npm install koa@^2.0.0
 - npm install codecov
 deploy:
   provider: npm
