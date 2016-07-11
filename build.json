@@ -12,6 +12,9 @@
       "global": 80
     }
   },
+  "codecov": {
+    "src": "./coverage/lcov.info"
+  },
   "eslint": {
     "failOnError": true
   }

@@ -1,8 +1,6 @@
 'use strict';
 
 const $ = require('gulp-load-plugins')();
-const _ = require('lodash');
-const sequence = require('run-sequence');
 const config = require('./build.json');
 const gulp = require('gulp');
 
@@ -45,13 +43,15 @@ gulp.task('test', () => {
     // Force `require` to return covered files
     .pipe($.istanbul.hookRequire())
     .on('finish', function() {
-      gulp.src(config.paths.test, { read: false })
-        .pipe($.mocha(config.mocha))
-        // Creating the reports after tests ran
-        .pipe($.istanbul.writeReports())
-        .pipe($.if(config.istanbul.enforceThresholds,
-          $.istanbul.enforceThresholds(config.istanbul)))
-        .pipe($.exit());
+      gulp.src(config.paths.test, {
+        read: false
+      })
+      .pipe($.mocha(config.mocha))
+      // Creating the reports after tests ran
+      .pipe($.istanbul.writeReports())
+      .pipe($.if(config.istanbul.enforceThresholds,
+        $.istanbul.enforceThresholds(config.istanbul)))
+      .pipe($.exit());
     });
 });
 
@@ -62,6 +62,16 @@ gulp.task('test', () => {
  * `gulp validate`
  */
 gulp.task('validate', ['eslint', 'test']);
+
+/**
+ * Uploads coverage report to codecov.io
+ *
+ * `gulp coverage`
+ */
+gulp.task('coverage', () => {
+  return gulp.src(config.codecov.src)
+    .pipe($.codecov());
+});
 
 /**
  * Runs 'validate'.

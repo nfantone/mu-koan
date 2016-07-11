@@ -14,10 +14,9 @@ cache:
   bundler: true
   directories:
   - node_modules
-script: npm run validate && ./node_modules/.bin/codecov
+script: npm run validate && npm run coverage
 before_script:
 - npm install koa@^2.0.0
-- npm install codecov
 deploy:
   provider: npm
   email: nfantone@gmail.com
