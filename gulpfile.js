@@ -13,12 +13,12 @@ $.release.register(gulp);
  *
  * `gulp eslint`
  */
-gulp.task('eslint', () => {
-  return gulp.src(config.paths.src)
+gulp.task('eslint', () =>
+  gulp.src(config.paths.src)
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.if(config.eslint.failOnError, $.eslint.failAfterError()));
-});
+    .pipe($.if(config.eslint.failOnError, $.eslint.failAfterError()))
+);
 
 /**
  * Watches sources and runs linter on
