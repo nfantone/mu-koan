@@ -1,19 +1,7 @@
 {
   "paths": {
     "src": ["app.js", "app/**/*.js"],
-    "test": ["test/**/*.spec.js"]
-  },
-  "nodemon": {
-    "script": "app.js",
-    "ignore": ["build.json", ".editorconfig", "test/",
-        ".eslintrc", ".gitignore", "gulpfile.js", "README.md", "tmp", "coverage"],
-    "delay": 3000,
-    "verbose": true
-  },
-  "debug": {
-    "debugPort": 5858,
-    "webHost": "localhost",
-    "webPort": 9090
+    "test": ["test/**/*.test.js"]
   },
   "mocha": {
     "require": ["should"]
@@ -23,6 +11,9 @@
     "thresholds": {
       "global": 80
     }
+  },
+  "codecov": {
+    "src": "./coverage/lcov.info"
   },
   "eslint": {
     "failOnError": true

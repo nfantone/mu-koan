@@ -1,54 +1,11 @@
 'use strict';
 
-const argv = require('minimist')(process.argv.slice(2), {
-  boolean: ['debug', 'debug-brk']
-});
 const $ = require('gulp-load-plugins')();
-const _ = require('lodash');
-const sequence = require('run-sequence');
 const config = require('./build.json');
 const gulp = require('gulp');
-const path = require('path');
 
 // Declare release task
 $.release.register(gulp);
-
-/**
- * Starts a nodemon server, watches
- * sources and restarts on changes.
- *
- * `gulp nodemon`
- */
-gulp.task('nodemon', () => {
-  process.env.NODE_ENV = 'development';
-  var debug = argv.debug || argv.debugBrk;
-  var options = _.defaults(config.nodemon, {
-    watch: config.paths.src,
-    ignore: config.paths.dist,
-    nodeArgs: [],
-    tasks: ['eslint']
-  });
-
-  // Add command line arguments
-  options.args = process.argv.slice(2);
-
-  // Normalize nodemon options paths
-  options.watch = _.map(options.watch, path.normalize);
-  options.ignore = _.map(options.ignore, path.normalize);
-
-  // Enable debug flag on nodemon
-  if (debug) {
-    options.nodeArgs.push('--' + (argv.debug ? 'debug' : 'debug-brk') + '=' + config.debug.debugPort);
-  }
-
-  return $.nodemon(options)
-    .on('restart', function() {
-      $.util.log('nodemon restarted');
-    })
-    .once('exit', function() {
-      $.util.log('nodemon exited cleanly');
-    });
-});
 
 /**
  * Runs eslint linter on source code
@@ -56,28 +13,12 @@ gulp.task('nodemon', () => {
  *
  * `gulp eslint`
  */
-gulp.task('eslint', () => {
-  return gulp.src(config.paths.src)
+gulp.task('eslint', () =>
+  gulp.src(config.paths.src)
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.if(config.eslint.failOnError, $.eslint.failOnError()));
-});
-
-/**
- * Starts a node-inspector instance.
- * In order to run alongside nodemon
- * `gulp --debug` should be used instead of this task.
- *
- * `gulp debug`
- */
-gulp.task('debug', (cb) => {
-  var options = _.defaults(config.debug, {
-    debugPort: 5858
-  });
-  gulp.src([])
-    .pipe($.nodeInspector(options));
-  return cb();
-});
+    .pipe($.if(config.eslint.failOnError, $.eslint.failAfterError()))
+);
 
 /**
  * Watches sources and runs linter on
@@ -85,9 +26,7 @@ gulp.task('debug', (cb) => {
  *
  * `gulp watch`
  */
-gulp.task('watch', () => {
-  gulp.watch(config.paths.src, ['validate']);
-});
+gulp.task('watch', () => gulp.watch(config.paths.src, ['validate']));
 
 /**
  * Runs unit tests and writes out
@@ -97,20 +36,22 @@ gulp.task('watch', () => {
  */
 gulp.task('test', () => {
   process.env.NODE_ENV = 'test';
-  process.env['logger:level'] = 'error';
+  process.env.LOGGER_LEVEL = 'error';
   return gulp.src(config.paths.src)
     // Covering files
     .pipe($.istanbul())
     // Force `require` to return covered files
     .pipe($.istanbul.hookRequire())
     .on('finish', function() {
-      gulp.src(config.paths.test, { read: false })
-        .pipe($.mocha(config.mocha))
-        // Creating the reports after tests ran
-        .pipe($.istanbul.writeReports())
-        .pipe($.if(config.istanbul.enforceThresholds,
-          $.istanbul.enforceThresholds(config.istanbul)))
-        .pipe($.exit());
+      gulp.src(config.paths.test, {
+        read: false
+      })
+      .pipe($.mocha(config.mocha))
+      // Creating the reports after tests ran
+      .pipe($.istanbul.writeReports())
+      .pipe($.if(config.istanbul.enforceThresholds,
+        $.istanbul.enforceThresholds(config.istanbul)))
+      .pipe($.exit());
     });
 });
 
@@ -123,16 +64,18 @@ gulp.task('test', () => {
 gulp.task('validate', ['eslint', 'test']);
 
 /**
- * Runs 'eslint' and 'nodemon'.
- * If --debug or --debug-brk are enabled, also runs 'debug'.
- * Default task.
+ * Uploads coverage report to codecov.io
  *
- * `gulp [--debug|--debug-brk]`
+ * `gulp coverage`
  */
-gulp.task('default', (cb) => {
-  var debug = argv.debug || argv.debugBrk;
-  sequence(_.compact([
-    'eslint',
-    debug ? 'debug' : undefined
-  ]), 'nodemon', cb);
+gulp.task('coverage', () => {
+  return gulp.src(config.codecov.src)
+    .pipe($.codecov());
 });
+
+/**
+ * Runs 'validate'.
+ *
+ * `gulp`
+ */
+gulp.task('default', ['validate']);
