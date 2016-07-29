@@ -40,6 +40,29 @@ app.listen();
 
 > You can take a look at a minimal running `mu-koan` sample app at [app.js](./app.js)
 
+
+### Advanced Usage
+Middleware order declaration is important and some of them need to be placed as close to the top of the chain as possible (like global error handlers). By default, mu-kōän declares all of its packed middlewares in a single call to `bootstrap`. However, if you need to declare custom middlewares somewhere in between you can make use of the `initialize` method.
+
+Declare them _before_ calling `bootstrap`, but after `initialize`.
+
+```js
+const custom = require('./middlewares/custom');
+
+let app = new Koa();
+
+middlewares.initialize(app, CONFIG);
+
+// Declare custom middleware here, after initialize
+app.use(custom());
+
+middlewares.bootstrap(app, CONFIG);
+```
+
+This way, "global" middlewares are still declared at the top (by calling `initialize`), but your custom functions run immediately after, just before any other set by mu-kōän.
+
+> Internally, `bootstrap` calls `initialize` if it hasn't already been call on that Koa app instance. So you'll always end up declaring all included middlewares, either way.
+
 ## Configuration
 The following properties are used to configure the different middlewares packed by `mu-koan`:
 
