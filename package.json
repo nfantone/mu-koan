@@ -1,7 +1,7 @@
 {
   "name": "mu-koan",
-  "version": "2.0.2-dev",
-  "codename": "Zodiacal Zafu",
+  "version": "2.1.0",
+  "codename": "Zionist Zabuton",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
   "main": "index.js",
