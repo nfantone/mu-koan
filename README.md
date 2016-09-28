@@ -1,11 +1,9 @@
 # mu-kōän 公案
-[![Build Status](https://travis-ci.org/nfantone/mu-koan.svg?branch=develop)](https://travis-ci.org/nfantone/mu-koan) [![codecov.io](https://codecov.io/github/nfantone/mu-koan/coverage.svg?branch=develop)](https://codecov.io/github/nfantone/mu-koan?branch=develop) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/nfantone/mu-koan/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/nfantone/mu-koan.svg?branch=develop)](https://travis-ci.org/nfantone/mu-koan) [![codecov.io](https://codecov.io/github/nfantone/mu-koan/coverage.svg?branch=develop)](https://codecov.io/github/nfantone/mu-koan?branch=develop) [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/nfantone/mu-koan/blob/master/LICENSE)[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
 > An opinionated Koa v2 JSON API boilerplate to achieve enlightenment.
 
 mu-kōän serves as kickstarter set for Koa 2.0.0+ applications aimed at creating _stateless_ REST JSON APIs. It includes a set of predefined Koa middlewares allowing for quicker bootstrapping with sensible defaults.
-
-[![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)
 
 ```sh
 npm i --save mu-koan
