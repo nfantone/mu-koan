@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '5'
+- '4'
 - '6'
 branches:
   only:
@@ -15,8 +15,10 @@ cache:
   directories:
   - node_modules
 script: npm run validate && npm run coverage
+before_install:
+  - npm i -g npm
 before_script:
-- npm install koa@^2.0.0
+  - npm install koa@next
 deploy:
   provider: npm
   email: nfantone@gmail.com
@@ -25,4 +27,4 @@ deploy:
   on:
     tags: true
     repo: nfantone/mu-koan
-    node_js: '5'
+    node_js: '6'
