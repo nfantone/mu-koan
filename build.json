@@ -1,6 +1,6 @@
 {
   "paths": {
-    "src": ["app.js", "app/**/*.js"],
+    "src": ["app.js", "lib/**/*.js"],
     "test": ["test/**/*.test.js"]
   },
   "mocha": {
