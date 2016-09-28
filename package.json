@@ -1,6 +1,6 @@
 {
   "name": "mu-koan",
-  "version": "2.1.2",
+  "version": "2.1.1",
   "codename": "Zionist Zabuton",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
@@ -48,10 +48,11 @@
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
     "lodash.defaultsdeep": "^4.6.0",
+    "lodash.omit": "^4.5.0",
     "mu-koan-logger": "^1.0.2"
   },
   "peerDependencies": {
-    "koa": "next"
+    "koa": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^3.6.1",
