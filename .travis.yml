@@ -18,7 +18,7 @@ script: npm run validate && npm run coverage
 before_install:
   - npm i -g npm
 before_script:
-  - npm install koa@next
+  - npm install koa@^2.0.0
 deploy:
   provider: npm
   email: nfantone@gmail.com
