@@ -51,7 +51,7 @@
     "mu-koan-logger": "^1.0.2"
   },
   "peerDependencies": {
-    "koa": "^2.0.0"
+    "koa": "next"
   },
   "devDependencies": {
     "eslint": "^3.6.1",
