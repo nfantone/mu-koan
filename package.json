@@ -1,6 +1,6 @@
 {
   "name": "mu-koan",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "codename": "Zionist Zabuton",
   "description": "An opinionated Koa v2 JSON API boilerplate to achieve enlightenment",
   "author": "Nicolás Fantone <nfantone@gmail.com> (https://github.com/nfantone)",
@@ -33,17 +33,16 @@
   ],
   "dependencies": {
     "kcors": "^2.1.1",
-    "koa-adapter-bluebird": "0.0.1",
-    "koa-bodyparser": "^3.0.0",
-    "koa-cache-control": "^1.0.0",
+    "koa-bodyparser": "^4.1.0",
+    "koa-cache-control": "^2.0.0",
     "koa-compress": "^2.0.0",
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",
     "koa-favicon": "^2.0.0",
     "koa-helmet": "^3.1.0",
-    "koa-json": "^2.0.0",
+    "koa-json": "^2.0.2",
     "koa-json-error": "^3.1.0",
-    "koa-jwt": "^2.0.0",
+    "koa-jwt": "^2.2.3",
     "koa-load-middlewares": "^1.0.0",
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
@@ -52,26 +51,26 @@
     "mu-koan-logger": "^1.0.2"
   },
   "peerDependencies": {
-    "koa": "next"
+    "koa": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.13.1",
+    "eslint": "^3.16.1",
     "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
+    "eslint-config-standard": "^7.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
     "gulp": "^3.9.1",
     "gulp-codecov": "^2.0.2",
     "gulp-eslint": "^3.0.1",
     "gulp-exit": "0.0.2",
     "gulp-if": "^2.0.2",
     "gulp-istanbul": "^1.1.1",
-    "gulp-load-plugins": "^1.4.0",
-    "gulp-mocha": "^3.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-mocha": "^4.0.1",
     "gulp-release": "^1.1.1",
     "gulp-util": "^3.0.8",
     "pre-commit": "^1.2.2",
-    "should": "^11.1.2"
+    "should": "^11.2.0"
   },
   "pre-commit": [
     "validate"
