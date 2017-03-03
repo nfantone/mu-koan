@@ -11,6 +11,9 @@
     "lib/",
     "favicon.ico"
   ],
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
