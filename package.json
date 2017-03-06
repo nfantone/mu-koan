@@ -45,7 +45,7 @@
     "koa-helmet": "^3.1.0",
     "koa-json": "^2.0.2",
     "koa-json-error": "^3.1.0",
-    "koa-jwt": "^2.2.3",
+    "koa-jwt": "^3.0.0",
     "koa-load-middlewares": "^1.0.0",
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
