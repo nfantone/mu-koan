@@ -12,7 +12,7 @@
     "favicon.ico"
   ],
   "engines": {
-    "node": ">= 7.6.0"
+    "node": ">= 6.0.0"
   },
   "scripts": {
     "start": "gulp",
@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "kcors": "^2.1.1",
-    "koa-bodyparser": "^4.1.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-cache-control": "^2.0.0",
     "koa-compress": "^2.0.0",
     "koa-conditional-get": "^2.0.0",
@@ -45,7 +45,7 @@
     "koa-helmet": "^3.1.0",
     "koa-json": "^2.0.2",
     "koa-json-error": "^3.1.0",
-    "koa-jwt": "^3.0.0",
+    "koa-jwt": "^3.0.1",
     "koa-load-middlewares": "^1.0.0",
     "koa-morgan": "^1.0.1",
     "koa-response-time": "^2.0.0",
@@ -54,12 +54,12 @@
     "mu-koan-logger": "^1.0.2"
   },
   "peerDependencies": {
-    "koa": "^2.0.1"
+    "koa": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^3.16.1",
+    "eslint": "^3.18.0",
     "eslint-config-semistandard": "^8.0.0",
-    "eslint-config-standard": "^7.0.0",
+    "eslint-config-standard": "^7.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
     "gulp": "^3.9.1",
@@ -69,11 +69,11 @@
     "gulp-if": "^2.0.2",
     "gulp-istanbul": "^1.1.1",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^4.0.1",
+    "gulp-mocha": "^4.1.0",
     "gulp-release": "^1.1.1",
     "gulp-util": "^3.0.8",
     "pre-commit": "^1.2.2",
-    "should": "^11.2.0"
+    "should": "^11.2.1"
   },
   "pre-commit": [
     "validate"
