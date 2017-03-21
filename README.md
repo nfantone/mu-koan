@@ -11,7 +11,7 @@ mu-kōän serves as kickstarter set for Koa 2.0.0+ applications aimed at creatin
 npm i --save mu-koan
 ```
 
-> mu-kōän requires [node](https://nodejs.org) 4.3.1+
+> mu-kōän requires [node](https://nodejs.org) 6.0.0+, matching [Koa requirements](https://github.com/koajs/koa/blob/master/package.json#L61).
 
 ## Usage
 Create a new Koa app, configure it the way you want and pass it as an argument to the `bootstrap` exported function, wich will add its own middlewares and initialize routes.
