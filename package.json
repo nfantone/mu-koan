@@ -69,7 +69,7 @@
     "gulp-if": "^2.0.2",
     "gulp-istanbul": "^1.1.1",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^4.1.0",
+    "gulp-mocha": "^5.0.0",
     "gulp-release": "^1.1.1",
     "gulp-util": "^3.0.8",
     "pre-commit": "^1.2.2",
