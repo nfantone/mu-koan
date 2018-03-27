@@ -42,7 +42,7 @@
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",
     "koa-favicon": "^2.0.0",
-    "koa-helmet": "^3.1.0",
+    "koa-helmet": "^4.0.0",
     "koa-json": "^2.0.2",
     "koa-json-error": "^3.1.0",
     "koa-jwt": "^3.0.1",
